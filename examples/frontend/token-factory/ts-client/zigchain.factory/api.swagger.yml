@@ -1,0 +1,700 @@
+swagger: '2.0'
+info:
+  title: HTTP API Console zigchain.factory
+  name: ''
+  description: ''
+paths:
+  /zigchain/factory/denom:
+    get:
+      operationId: Query_DenomAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              denom:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    creator:
+                      type: string
+                    denom:
+                      type: string
+                    maxSupply:
+                      type: string
+                      format: int64
+                    supply:
+                      type: string
+                      format: int64
+                    canChangeMaxSupply:
+                      type: boolean
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                  total:
+                    type: string
+                    format: uint64
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  /zigchain/factory/denom/{denom}:
+    get:
+      operationId: Query_Denom
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              denom:
+                type: string
+              supply:
+                type: string
+                format: int64
+              maxSupply:
+                type: string
+                format: int64
+              canChangeMaxSupply:
+                type: boolean
+              creator:
+                type: string
+              bankAdmin:
+                type: string
+              metadataAdmin:
+                type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: denom
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
+  /zigchain/factory/denomByAdmin/{admin}:
+    get:
+      operationId: Query_DenomsByAdmin
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              denoms:
+                type: array
+                items:
+                  type: string
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                  total:
+                    type: string
+                    format: uint64
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: admin
+          in: path
+          required: true
+          type: string
+        - name: pagination.key
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  /zigchain/factory/denom_auth:
+    get:
+      operationId: Query_ListDenomAuth
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              denomAuth:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    denom:
+                      type: string
+                    bankAdmin:
+                      type: string
+                    metadataAdmin:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                  total:
+                    type: string
+                    format: uint64
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  /zigchain/factory/denom_auth/{denom}:
+    get:
+      operationId: Query_DenomAuth
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              denomAuth:
+                type: object
+                properties:
+                  denom:
+                    type: string
+                  bankAdmin:
+                    type: string
+                  metadataAdmin:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: denom
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
+  /zigchain/factory/params:
+    get:
+      operationId: Query_Params
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              params:
+                type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      tags:
+        - Query
+definitions:
+  Any:
+    type: object
+    properties:
+      '@type':
+        type: string
+    additionalProperties: {}
+  Status:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      details:
+        type: array
+        items:
+          type: object
+          properties:
+            '@type':
+              type: string
+          additionalProperties: {}
+  Denom:
+    type: object
+    properties:
+      creator:
+        type: string
+      denom:
+        type: string
+      maxSupply:
+        type: string
+        format: int64
+      supply:
+        type: string
+        format: int64
+      canChangeMaxSupply:
+        type: boolean
+  DenomAuth:
+    type: object
+    properties:
+      denom:
+        type: string
+      bankAdmin:
+        type: string
+      metadataAdmin:
+        type: string
+  PageRequest:
+    type: object
+    properties:
+      key:
+        type: string
+        format: byte
+      offset:
+        type: string
+        format: uint64
+      limit:
+        type: string
+        format: uint64
+      count_total:
+        type: boolean
+      reverse:
+        type: boolean
+  PageResponse:
+    type: object
+    properties:
+      next_key:
+        type: string
+        format: byte
+      total:
+        type: string
+        format: uint64
+  Params:
+    type: object
+  QueryAllDenomAuthResponse:
+    type: object
+    properties:
+      denomAuth:
+        type: array
+        items:
+          type: object
+          properties:
+            denom:
+              type: string
+            bankAdmin:
+              type: string
+            metadataAdmin:
+              type: string
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+          total:
+            type: string
+            format: uint64
+  QueryAllDenomResponse:
+    type: object
+    properties:
+      denom:
+        type: array
+        items:
+          type: object
+          properties:
+            creator:
+              type: string
+            denom:
+              type: string
+            maxSupply:
+              type: string
+              format: int64
+            supply:
+              type: string
+              format: int64
+            canChangeMaxSupply:
+              type: boolean
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+          total:
+            type: string
+            format: uint64
+  QueryDenomAuthResponse:
+    type: object
+    properties:
+      denomAuth:
+        type: object
+        properties:
+          denom:
+            type: string
+          bankAdmin:
+            type: string
+          metadataAdmin:
+            type: string
+  QueryDenomByAdminResponse:
+    type: object
+    properties:
+      denoms:
+        type: array
+        items:
+          type: string
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+          total:
+            type: string
+            format: uint64
+  QueryDenomResponse:
+    type: object
+    properties:
+      denom:
+        type: string
+      supply:
+        type: string
+        format: int64
+      maxSupply:
+        type: string
+        format: int64
+      canChangeMaxSupply:
+        type: boolean
+      creator:
+        type: string
+      bankAdmin:
+        type: string
+      metadataAdmin:
+        type: string
+  QueryParamsResponse:
+    type: object
+    properties:
+      params:
+        type: object
+  Coin:
+    type: object
+    properties:
+      denom:
+        type: string
+      amount:
+        type: string
+  DenomUnit:
+    type: object
+    properties:
+      denom:
+        type: string
+      exponent:
+        type: integer
+        format: int64
+      aliases:
+        type: array
+        items:
+          type: string
+  Metadata:
+    type: object
+    properties:
+      description:
+        type: string
+      denom_units:
+        type: array
+        items:
+          type: object
+          properties:
+            denom:
+              type: string
+            exponent:
+              type: integer
+              format: int64
+            aliases:
+              type: array
+              items:
+                type: string
+      base:
+        type: string
+      display:
+        type: string
+      name:
+        type: string
+      symbol:
+        type: string
+      uri:
+        type: string
+      uri_hash:
+        type: string
+  MsgBurnTokensResponse:
+    type: object
+    properties:
+      amountBurned:
+        type: object
+        properties:
+          denom:
+            type: string
+          amount:
+            type: string
+  MsgCreateDenomResponse:
+    type: object
+    properties:
+      creator:
+        type: string
+      bankAdmin:
+        type: string
+      metadataAdmin:
+        type: string
+      denom:
+        type: string
+      maxSupply:
+        type: string
+        format: int64
+      canChangeMaxSupply:
+        type: boolean
+      URI:
+        type: string
+      URIHash:
+        type: string
+  MsgMintAndSendTokensResponse:
+    type: object
+    properties:
+      tokenMinted:
+        type: object
+        properties:
+          denom:
+            type: string
+          amount:
+            type: string
+      recipient:
+        type: string
+      newSupply:
+        type: object
+        properties:
+          denom:
+            type: string
+          amount:
+            type: string
+  MsgSetDenomMetadataResponse:
+    type: object
+    properties:
+      metadata:
+        type: object
+        properties:
+          description:
+            type: string
+          denom_units:
+            type: array
+            items:
+              type: object
+              properties:
+                denom:
+                  type: string
+                exponent:
+                  type: integer
+                  format: int64
+                aliases:
+                  type: array
+                  items:
+                    type: string
+          base:
+            type: string
+          display:
+            type: string
+          name:
+            type: string
+          symbol:
+            type: string
+          uri:
+            type: string
+          uri_hash:
+            type: string
+  MsgUpdateDenomAuthResponse:
+    type: object
+    properties:
+      denom:
+        type: string
+      bankAdmin:
+        type: string
+      metadataAdmin:
+        type: string
+  MsgUpdateDenomMaxSupplyResponse:
+    type: object
+    properties:
+      denom:
+        type: string
+      maxSupply:
+        type: string
+        format: int64
+      canChangeMaxSupply:
+        type: boolean
+  MsgUpdateDenomMetadataAuthResponse:
+    type: object
+    properties:
+      denom:
+        type: string
+      metadataAdmin:
+        type: string
+  MsgUpdateDenomURIResponse:
+    type: object
+    properties:
+      denom:
+        type: string
+      URI:
+        type: string
+      URIHash:
+        type: string
+  MsgUpdateParamsResponse:
+    type: object
