@@ -42,10 +42,38 @@ Then open [http://localhost:3000](http://localhost:3000). Set `PINATA_JWT` and `
 
 ## 5. Environment Configuration
 
-- Copy `.env.example` to `.env.local` and fill in the values.
-- **Default network:** ZigChain Testnet (`NEXT_PUBLIC_DEFAULT_NETWORK=testnet`).
-- **Switch network:** Set `NEXT_PUBLIC_DEFAULT_NETWORK` to `mainnet` or `testnet`; the app uses the corresponding `*_API_URL`, `*_RPC_URL`, and `*_CHAIN_ID` from the same file. For a local node, point those URLs to your local LCD/RPC.
-- **Required for token images:** `PINATA_JWT` and `NEXT_PUBLIC_GATEWAY_URL` (get from [Pinata](https://docs.pinata.cloud/quickstart)). No private keys in env — wallet signing is done via the connected wallet.
+Copy `.env.example` to `.env.local` and fill in the values you need. Each variable is described below.
+
+### Mainnet and testnet (provided as default)
+
+These values are already set in `.env.example` for ZigChain mainnet and testnet. You can leave them as-is unless you use a custom or local node.
+
+- **`NEXT_PUBLIC_MAINNET_API_URL`** — LCD API URL for mainnet (default: `https://public-zigchain-lcd.numia.xyz`).
+- **`NEXT_PUBLIC_MAINNET_RPC_URL`** — RPC URL for mainnet (default: `https://public-zigchain-rpc.numia.xyz`).
+- **`NEXT_PUBLIC_MAINNET_CHAIN_ID`** — Mainnet chain ID (default: `zigchain-1`).
+- **`NEXT_PUBLIC_TESTNET_API_URL`** — LCD API URL for testnet (default: `https://public-zigchain-testnet-lcd.numia.xyz`).
+- **`NEXT_PUBLIC_TESTNET_RPC_URL`** — RPC URL for testnet (default: `https://public-zigchain-testnet-rpc.numia.xyz`).
+- **`NEXT_PUBLIC_TESTNET_CHAIN_ID`** — Testnet chain ID (default: `zig-test-2`).
+
+### Default network
+
+- **`NEXT_PUBLIC_DEFAULT_NETWORK`** — Which network the app uses by default: `mainnet` or `testnet`. The app then uses the corresponding API URL, RPC URL, and chain ID from the variables above. Set to `testnet` for safe testing.
+
+### Token images (required for uploads)
+
+- **`PINATA_JWT`** — Your JWT for the [Pinata](https://www.pinata.cloud) IPFS API. Create an API key in the Pinata dashboard and paste the JWT here. Required for uploading token images.
+- **`NEXT_PUBLIC_GATEWAY_URL`** — Your Pinata gateway URL (e.g. `https://your-subdomain.mypinata.cloud`). Found under **Gateways** in the Pinata dashboard. Used to resolve IPFS URLs for token images.
+
+No private keys go in env; wallet signing is done via the connected wallet.
+
+### Site branding
+
+- **`NEXT_PUBLIC_SITE_TITLE`** — Name shown in the browser tab, nav bar, and logo alt text. Optional; default in `.env.example` is `My Token Factory`.
+- **`NEXT_PUBLIC_SITE_DESCRIPTION`** — Meta description for the app (e.g. for search results and social previews). Optional; default in `.env.example` is `Token Factory for My Project`.
+
+### Logging
+
+- **`ENABLE_LOGGING`** — Set to `true` to enable app logging; set to `false` (default) to disable.
 
 ---
 
@@ -69,9 +97,11 @@ Then open [http://localhost:3000](http://localhost:3000). Set `PINATA_JWT` and `
 
 ## 8. Running on Different Networks
 
-- **Testnet (default):** Uses `NEXT_PUBLIC_TESTNET_*` URLs and `zig-test-2`. Safe for trying token creation.
-- **Mainnet:** Set `NEXT_PUBLIC_DEFAULT_NETWORK=mainnet`; uses `NEXT_PUBLIC_MAINNET_*` and `zigchain-1`.
-- **Local node:** Set `NEXT_PUBLIC_*_API_URL` and `NEXT_PUBLIC_*_RPC_URL` to your local LCD/RPC and the matching chain ID.
+The app includes a **network switch in the frontend** so users can change networks (mainnet / testnet) without editing the environment. The switch reads the API URL, RPC URL, and chain ID for each network from your `.env` file — the same variables described in [Environment Configuration](#5-environment-configuration).
+
+- **Testnet (default):** The app starts on testnet using `NEXT_PUBLIC_TESTNET_*` and chain ID `zig-test-2`. Good for trying token creation without mainnet funds.
+- **Mainnet:** Use the in-app network switch to switch to mainnet; it uses `NEXT_PUBLIC_MAINNET_*` and `zigchain-1`. You can also set `NEXT_PUBLIC_DEFAULT_NETWORK=mainnet` in `.env` if you want mainnet as the initial network.
+- **Local node:** To use your own node, set the corresponding `NEXT_PUBLIC_MAINNET_*` or `NEXT_PUBLIC_TESTNET_*` API URL, RPC URL, and chain ID in `.env` to point to your local LCD/RPC. The same frontend switch then toggles between whatever networks you configured.
 
 ---
 
