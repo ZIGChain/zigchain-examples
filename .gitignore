@@ -1,0 +1,16 @@
+# Dependencies and build output (any example)
+node_modules/
+.next/
+out/
+dist/
+target/
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+
+# OS and editor
+.DS_Store
+Thumbs.db
+*.log
