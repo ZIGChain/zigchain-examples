@@ -10,6 +10,9 @@ target/
 .env.local
 .env.*.local
 
+# Cursor IDE (project-specific rules; keep local only for public repo)
+.cursor/
+
 # OS and editor
 .DS_Store
 Thumbs.db
