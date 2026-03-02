@@ -37,9 +37,9 @@ Then copy the contents of `examples/frontend/token-factory` into your project fo
 
 ## Table of Available Examples
 
-| Category            | Example       | Path                                    | Description                         |
-| ------------------- | ------------- | --------------------------------------- | ----------------------------------- |
-| **Frontend**        | Token Factory | `examples/frontend/token-factory`       | Next.js token factory UI            |
+| Category     | Example       | Path                              | Description              |
+| ------------ | ------------- | --------------------------------- | ------------------------ |
+| **Frontend** | Token Factory | `examples/frontend/token-factory` | Next.js token factory UI |
 
 More examples will be added over time. Check the `examples/` folder for the latest list.
 
@@ -51,15 +51,15 @@ zigchain-examples/
 ├── LICENSE
 └── examples/
     ├── frontend/
-    │   └── token-factory/
+    └── token-factory/
 ```
 
 ## Tutorials
 
 For step-by-step guides that use these examples:
 
-- **Zigchain Docs** – [docs.zigchain.com](https://docs.zigchain.com/tutorials)
-- **Token Factory tutorial** – See the [Token Factory README](examples/frontend/token-factory/README.md) and the related article on the Zigchain blog/docs.
+- **Zigchain Docs** – [Tutorial Docs](https://docs.zigchain.com/tutorials)
+- **Token Factory tutorial** – See the [Token Factory README](examples/frontend/token-factory/README.md) and the related article on the Zigchain docs.
 
 We will add direct links here as tutorials are published.
 
