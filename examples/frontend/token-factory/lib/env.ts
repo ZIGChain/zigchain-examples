@@ -29,7 +29,7 @@ export const ENV_VARS = {
   // Site branding
   SITE_TITLE: process.env.NEXT_PUBLIC_SITE_TITLE ?? "Token Factory",
   SITE_DESCRIPTION:
-    process.env.NEXT_PUBLIC_SITE_DESCRIPTION ?? "Token Factory on Zigchain",
+    process.env.NEXT_PUBLIC_SITE_DESCRIPTION ?? "Token Factory on ZIGChain",
 };
 
 // Network configurations using environment variables

@@ -19,7 +19,7 @@ const COINGECKO_IDS: Record<string, string> = {
   STARS: "stargaze",
   INJ: "injective-protocol",
   TIA: "celestia",
-  ZIG: "zignaly", // Zigchain / ZIG on CoinGecko
+  ZIG: "zignaly", // ZIGChain / ZIG on CoinGecko
 };
 
 const priceCache: Record<string, { price: number; ts: number }> = {};

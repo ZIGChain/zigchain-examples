@@ -1,6 +1,6 @@
-![Zigchain Token Factory](public/logo.png)
+![ZIGChain Token Factory](public/logo.png)
 
-# Zigchain Token Factory
+# ZIGChain Token Factory
 
 **Category:** Frontend
 
@@ -8,10 +8,12 @@
 
 ## 2. What This Example Demonstrates
 
-- Create and list tokens on Zigchain via the Token Factory module.
+This example provides a **complete token factory interface**—a web app where users can create and list tokens on ZIGChain, all from one UI.
+
+- **Full token factory UI:** Create new tokens (denoms), set metadata and images, mint supply, and view all tokens in a sortable table—powered by ZIGChain’s Token Factory module.
 - Connect a wallet (Cosmos Kit) and broadcast create-denom / mint messages.
-- Upload token metadata and images to IPFS (Pinata) and display tokens in a table.
-- **ZigChain concept:** Token Factory (native denom creation, metadata).
+- Upload token metadata and images to IPFS (Pinata) and display tokens in the table.
+- **ZIGChain concept:** Token Factory (native denom creation, metadata).
 - **Target level:** Beginner / Intermediate.
 
 ---
@@ -21,7 +23,7 @@
 - **Node.js** 18+ (see [Toolchain](#toolchain-pinning) for pinned version).
 - **npm** (or yarn / pnpm / bun).
 - **Wallet** — a Cosmos-compatible wallet (e.g. Keplr, Leap) for signing transactions.
-- **ZigChain testnet account** — recommended for testing (no mainnet funds required).
+- **ZIGChain testnet account** — recommended for testing (no mainnet funds required).
 - **Pinata account** — for IPFS (token images); see [Environment Configuration](#5-environment-configuration).
 
 ---
@@ -29,8 +31,10 @@
 ## 4. Quick Start
 
 ```bash
-npx degit ZIGChain/zigchain-examples/examples/frontend/token-factory zigchain-token-factory
-cd zigchain-token-factory
+git clone --depth 1 --filter=blob:none --sparse https://github.com/ZIGChain/zigchain-examples.git zigchain-examples
+cd zigchain-examples
+git sparse-checkout set examples/frontend/token-factory
+cd examples/frontend/token-factory
 npm i
 cp .env.example .env.local
 npm run dev
@@ -46,7 +50,7 @@ Copy `.env.example` to `.env.local` and fill in the values you need. Each variab
 
 ### Mainnet and testnet (provided as default)
 
-These values are already set in `.env.example` for ZigChain mainnet and testnet. You can leave them as-is unless you use a custom or local node.
+These values are already set in `.env.example` for ZIGChain mainnet and testnet. You can leave them as-is unless you use a custom or local node.
 
 - **`NEXT_PUBLIC_MAINNET_API_URL`** — LCD API URL for mainnet (default: `https://public-zigchain-lcd.numia.xyz`).
 - **`NEXT_PUBLIC_MAINNET_RPC_URL`** — RPC URL for mainnet (default: `https://public-zigchain-rpc.numia.xyz`).
@@ -82,14 +86,14 @@ No private keys go in env; wallet signing is done via the connected wallet.
 - `app/` — Next.js App Router pages, layout, API routes (e.g. CoinGecko proxy).
 - `components/` — UI (wallet, token creation form, tokens table).
 - `lib/` — env parsing, hooks (e.g. `useTx`), token display/pricing helpers.
-- `ts-client/` — Generated Cosmos/Zigchain client (LCD, Tx, Token Factory, etc.).
+- `ts-client/` — Generated Cosmos/ZIGChain client (LCD, Tx, Token Factory, etc.).
 - `public/` — Static assets (logo, favicon).
 
 ---
 
 ## 7. How It Works
 
-- The app uses **Cosmos Kit** for wallet connection and **CosmJS** (Stargate/LCD) under the hood. Generated **ts-client** code talks to Zigchain LCD for queries and builds messages for the **Token Factory** module (create denom, set metadata, mint).
+- The app uses **Cosmos Kit** for wallet connection and **CosmJS** (Stargate/LCD) under the hood. Generated **ts-client** code talks to ZIGChain LCD for queries and builds messages for the **Token Factory** module (create denom, set metadata, mint).
 - **Transactions** are built and broadcast via the connected wallet; create-denom and mint messages are sent to the chain using the configured RPC/API URLs.
 - **Token list** is read from chain (Token Factory + bank module); metadata and images are resolved from IPFS via the Pinata gateway when available.
 
@@ -118,8 +122,8 @@ Deploy the output (e.g. Vercel): connect the repo, set the same env vars in the 
 
 ## 10. Related Resources
 
-- [Zigchain Examples](https://github.com/ZIGChain/zigchain-examples) — this repo.
-- ZigChain docs — Token Factory and chain endpoints (add your docs link when available).
+- [ZIGChain Examples](https://github.com/ZIGChain/zigchain-examples) — this repo.
+- ZIGChain docs — Token Factory and chain endpoints (add your docs link when available).
 - [Pinata Quickstart](https://docs.pinata.cloud/quickstart) — IPFS and gateway setup.
 
 ---

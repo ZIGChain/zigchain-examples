@@ -19,10 +19,9 @@ const pressStart2P = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title:
-    process.env.NEXT_PUBLIC_SITE_TITLE ?? "Token Factory",
+  title: process.env.NEXT_PUBLIC_SITE_TITLE ?? "Token Factory",
   description:
-    process.env.NEXT_PUBLIC_SITE_DESCRIPTION ?? "Token Factory on Zigchain",
+    process.env.NEXT_PUBLIC_SITE_DESCRIPTION ?? "Token Factory on ZIGChain",
 };
 
 export default function RootLayout({

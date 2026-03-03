@@ -106,7 +106,7 @@ export default function TokenCreationForm({
   const createToken = async () => {
     if (!address) {
       toast.error(
-        "You must connect your wallet to be able to create a new token."
+        "You must connect your wallet to be able to create a new token.",
       );
       return;
     }
@@ -120,7 +120,7 @@ export default function TokenCreationForm({
       !file
     ) {
       toast.error(
-        "Please fill in all required fields: subdenom, description, ticker, max supply, and select an image."
+        "Please fill in all required fields: subdenom, description, ticker, max supply, and select an image.",
       );
       return;
     }
@@ -128,7 +128,7 @@ export default function TokenCreationForm({
     // Validate numeric values
     if (isNaN(maxSupply) || isNaN(precision)) {
       toast.error(
-        "Please enter valid numeric values for precision and max supply."
+        "Please enter valid numeric values for precision and max supply.",
       );
       return;
     }
@@ -136,14 +136,14 @@ export default function TokenCreationForm({
     // Validate social media usernames (no @ symbols)
     if (twitter && twitter.includes("@")) {
       toast.error(
-        "Twitter username should not include @ symbol. Just enter the username."
+        "Twitter username should not include @ symbol. Just enter the username.",
       );
       return;
     }
 
     if (telegram && telegram.includes("@")) {
       toast.error(
-        "Telegram username should not include @ symbol. Just enter the username."
+        "Telegram username should not include @ symbol. Just enter the username.",
       );
       return;
     }
@@ -171,7 +171,7 @@ export default function TokenCreationForm({
       // Helper function to construct social media URLs from usernames
       const constructSocialUrl = (
         platform: string,
-        username: string
+        username: string,
       ): string => {
         if (!username || username.trim() === "") return "";
         // Remove @ symbol if user added it
@@ -245,12 +245,12 @@ export default function TokenCreationForm({
         .digest("hex");
       const metadataUri = await uploadMetadataToIPFS(metadataJson);
 
-      // Validate subdenom according to Zigchain documentation
+      // Validate subdenom according to ZIGChain documentation
       // Must be 3-44 characters, lowercase letters, numbers, and hyphens only, start with lowercase letter
       const subDenomRegex = /^[a-z][a-z0-9-]{2,43}$/;
       if (!subDenomRegex.test(name)) {
         toast.error(
-          "Subdenom must be 3-44 characters, start with lowercase letter, and contain only lowercase letters, numbers, and hyphens."
+          "Subdenom must be 3-44 characters, start with lowercase letter, and contain only lowercase letters, numbers, and hyphens.",
         );
         return;
       }
@@ -259,12 +259,12 @@ export default function TokenCreationForm({
       const fullTokenName = `coin.${address}.${name}`;
       if (fullTokenName.length > 128) {
         toast.error(
-          `Token name too long. Full name "${fullTokenName}" exceeds 128 characters. Please use a shorter subdenom.`
+          `Token name too long. Full name "${fullTokenName}" exceeds 128 characters. Please use a shorter subdenom.`,
         );
         return;
       }
 
-      // Create message object matching Zigchain documentation parameters
+      // Create message object matching ZIGChain documentation parameters
       const createDenomData = {
         creator: address,
         subDenom: name, // This will become the subdenom
