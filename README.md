@@ -17,8 +17,8 @@ Each example is self-contained so you can copy only what you need.
 Use git sparse checkout to download only the example you need:
 
 ```bash
-git clone --depth 1 --filter=blob:none --sparse https://github.com/ZIGChain/zigchain-examples.git zigchain-examples
-cd zigchain-examples
+git clone --depth 1 --filter=blob:none --sparse https://github.com/ZIGChain/zigchain-examples-private.git zigchain-examples-private
+cd zigchain-examples-private
 git sparse-checkout set examples/frontend/token-factory
 ```
 
@@ -35,7 +35,7 @@ More examples will be added over time. Check the `examples/` folder for the late
 ## Repository Structure
 
 ```
-zigchain-examples/
+zigchain-examples-private/
 ├── README.md
 ├── LICENSE
 └── examples/
@@ -48,9 +48,7 @@ zigchain-examples/
 For step-by-step guides that use these examples:
 
 - **ZIGChain Docs** – [Tutorial Docs](https://docs.zigchain.com/tutorials)
-- **Token Factory tutorial** – See the [Token Factory README](examples/frontend/token-factory/README.md) and the related article on the ZIGChain docs.
-
-We will add direct links here as tutorials are published.
+- **Token Factory tutorial** – See the [Token Factory README](examples/frontend/token-factory/README.md) and the [Build a Token Factory in 15 Minutes](https://docs.zigchain.com/tutorials/build-a-factory-in-15-mins) article on the ZIGChain docs.
 
 ## License
 
