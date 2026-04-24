@@ -55,7 +55,7 @@ export default function TokenTable() {
   } = useDisclosure();
   const [filterValue, setFilterValue] = useState<string>("");
   const [visibleColumns, setVisibleColumns] = useState<Selection>(
-    () => new Set(INITIAL_VISIBLE_COLUMNS)
+    () => new Set(INITIAL_VISIBLE_COLUMNS),
   );
   const [rowsPerPage, setRowsPerPage] = useState<number>(100);
   const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
@@ -70,7 +70,7 @@ export default function TokenTable() {
   const [showMyTokensOnly, setShowMyTokensOnly] = useState<boolean>(false);
 
   const { tokensWithMetadata, isLoading, mutateTokens, mutateMetadata } =
-    useTokenTableData(`${page}`, `1000`);
+    useTokenTableData();
 
   const hasSearchFilter = Boolean(filterValue);
 
@@ -78,7 +78,7 @@ export default function TokenTable() {
     if (visibleColumns === "all") return columns;
 
     return columns.filter((column: any) =>
-      Array.from(visibleColumns).includes(column.uid)
+      Array.from(visibleColumns).includes(column.uid),
     );
   }, [visibleColumns]);
 
@@ -104,7 +104,7 @@ export default function TokenTable() {
     if (showMyTokensOnly && address) {
       const addressLower = address.toLowerCase();
       filteredTokens = filteredTokens.filter(
-        (token: any) => token?.creator?.toLowerCase() === addressLower
+        (token: any) => token?.creator?.toLowerCase() === addressLower,
       );
     }
 
@@ -411,19 +411,19 @@ export default function TokenTable() {
           </div>
         </div>
         <div className="flex justify-between items-center">
-            <div className="flex items-center gap-4">
-              {address && (
-                <Checkbox
-                  isSelected={showMyTokensOnly}
-                  onValueChange={setShowMyTokensOnly}
-                >
-                  My tokens only
-                </Checkbox>
-              )}
-              <span className="text-muted-foreground text-small">
-                Total {filteredItems.length} tokens
-              </span>
-            </div>
+          <div className="flex items-center gap-4">
+            {address && (
+              <Checkbox
+                isSelected={showMyTokensOnly}
+                onValueChange={setShowMyTokensOnly}
+              >
+                My tokens only
+              </Checkbox>
+            )}
+            <span className="text-muted-foreground text-small">
+              Total {filteredItems.length} tokens
+            </span>
+          </div>
           <div className="flex items-center gap-2">
             <span className="text-muted-foreground text-small">
               Rows per page:
@@ -582,7 +582,7 @@ export default function TokenTable() {
                                 onPress={() =>
                                   copyToClipboard(
                                     selectedTokenDetails.denom,
-                                    "denom"
+                                    "denom",
                                   )
                                 }
                               >
@@ -615,7 +615,7 @@ export default function TokenTable() {
                                 onPress={() =>
                                   copyToClipboard(
                                     selectedTokenDetails.creator,
-                                    "creator"
+                                    "creator",
                                   )
                                 }
                               >
@@ -633,7 +633,7 @@ export default function TokenTable() {
                               <Link
                                 isExternal
                                 href={createRangeExplorerUrl(
-                                  selectedTokenDetails.creator
+                                  selectedTokenDetails.creator,
                                 )}
                                 className="text-primary hover:text-primary/80 font-mono text-sm break-all bg-muted/50 dark:bg-muted/30 p-2 rounded border border-border block pr-8"
                               >

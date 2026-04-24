@@ -1,18 +1,57 @@
 import { chainClient } from "@/context/ChainContext";
 
-// Fetch all tokens
-export const fetchTokens = (page: string, limit?: string) => {
-  return chainClient.ZigchainFactory.query.queryDenomAll({
-    page: page,
-    "pagination.limit": limit,
-  } as any);
+const DEFAULT_PAGINATION_LIMIT = "200";
+const MAX_PAGINATION_REQUESTS = 100;
+
+// Fetch all tokens by walking pagination.next_key
+export const fetchTokens = async (limit: string = DEFAULT_PAGINATION_LIMIT) => {
+  const allDenoms: any[] = [];
+  let nextKey: string | undefined = undefined;
+  let requestCount = 0;
+
+  do {
+    const response = await chainClient.ZigchainFactory.query.queryDenomAll({
+      "pagination.key": nextKey,
+      "pagination.limit": limit,
+    });
+
+    allDenoms.push(...(response?.data?.denom ?? []));
+    nextKey = response?.data?.pagination?.next_key;
+    requestCount += 1;
+  } while (nextKey && requestCount < MAX_PAGINATION_REQUESTS);
+
+  return {
+    data: {
+      denom: allDenoms,
+    },
+  };
 };
 
-// Fetch metadata for tokens
-export const fetchTokenMetadata = (limit: string) => {
-  return chainClient.CosmosBankV1Beta1.query.queryDenomsMetadata({
-    "pagination.limit": limit,
-  });
+// Fetch all metadata by walking pagination.next_key
+export const fetchTokenMetadata = async (
+  limit: string = DEFAULT_PAGINATION_LIMIT,
+) => {
+  const allMetadata: any[] = [];
+  let nextKey: string | undefined = undefined;
+  let requestCount = 0;
+
+  do {
+    const response =
+      await chainClient.CosmosBankV1Beta1.query.queryDenomsMetadata({
+        "pagination.key": nextKey,
+        "pagination.limit": limit,
+      });
+
+    allMetadata.push(...(response?.data?.metadatas ?? []));
+    nextKey = response?.data?.pagination?.next_key;
+    requestCount += 1;
+  } while (nextKey && requestCount < MAX_PAGINATION_REQUESTS);
+
+  return {
+    data: {
+      metadatas: allMetadata,
+    },
+  };
 };
 
 // Fetch all pools
@@ -47,7 +86,7 @@ export const fetchDenomBalance = (address: string, denom: string) => {
 export const getPoolId = async (tokenA: string, tokenB: string) => {
   const pool = await chainClient.ZigchainDex.query.queryGetPoolUid(
     tokenA.replaceAll("/", "'"),
-    tokenB.replaceAll("/", "'")
+    tokenB.replaceAll("/", "'"),
   );
   return pool.data.poolUids?.poolId ?? null;
 };
@@ -67,7 +106,7 @@ export const getMetadata = async (limit: string) => {
         ...metadata,
         ...extraData,
       };
-    })
+    }),
   );
   return denomsWithMetadata;
 };
@@ -76,7 +115,7 @@ export const getMetadata = async (limit: string) => {
 export const fetchSwapEstimate = (
   poolId: string,
   token: string,
-  amount: string
+  amount: string,
 ) => {
   const denom = token.replaceAll("/", "'");
   const coinIn = `${amount}${denom}`;

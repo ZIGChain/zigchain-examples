@@ -4,17 +4,17 @@ import { convertIpfsToHttp, safeFetch } from "@/lib/utils/utils";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 
-export const useTokenTableData = (page: string, rowsPerPage: string) => {
+export const useTokenTableData = () => {
   const {
     data: tokensData,
     error: tokensError,
     mutate: mutateTokens,
-  } = useSWR(`${page}-${rowsPerPage}`, () => fetchTokens(page, rowsPerPage));
+  } = useSWR("tokens-all", () => fetchTokens());
   const {
     data: metadataData,
     error: metadataError,
     mutate: mutateMetadata,
-  } = useSWR(rowsPerPage, fetchTokenMetadata);
+  } = useSWR("metadata-all", () => fetchTokenMetadata());
 
   const [tokensWithMetadata, setTokensWithMetadata] = useState<Denom[]>([]);
 
@@ -28,7 +28,7 @@ export const useTokenTableData = (page: string, rowsPerPage: string) => {
       const tokensWithMetadata = await Promise.all(
         tokens.map(async (token) => {
           const metadata = metadatas.find(
-            (meta: any) => meta.base === token.denom
+            (meta: any) => meta.base === token.denom,
           );
 
           if (!metadata) {
@@ -95,7 +95,7 @@ export const useTokenTableData = (page: string, rowsPerPage: string) => {
               metadata,
             };
           }
-        })
+        }),
       );
 
       setTokensWithMetadata(tokensWithMetadata as any);
