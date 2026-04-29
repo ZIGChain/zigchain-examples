@@ -26,9 +26,10 @@ Then copy the contents of `examples/frontend/token-factory` into your project fo
 
 ## Table of Available Examples
 
-| Category     | Example       | Path                              | Description                                                                                                                                                                                               |
-| ------------ | ------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Frontend** | Token Factory | `examples/frontend/token-factory` | Next.js app that provides a full **token factory interface**: create new tokens (denoms) on ZIGChain, set metadata and images (IPFS), mint supply, and list all tokens in a table with wallet connection. |
+| Category        | Example              | Path                                     | Description                                                                                                                                                                                               |
+| --------------- | -------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Frontend**    | Token Factory        | `examples/frontend/token-factory`        | Next.js app that provides a full **token factory interface**: create new tokens (denoms) on ZIGChain, set metadata and images (IPFS), mint supply, and list all tokens in a table with wallet connection. |
+| **Integration** | ibc-callbacks-module | `examples/integrations/callbacks-module` | End-to-end IBC callbacks tutorial showing how an ICS-20 transfer memo (`dest_callback`) on Osmosis can trigger a CosmWasm contract callback on ZIGChain.                                                  |
 
 More examples will be added over time. Check the `examples/` folder for the latest list.
 
@@ -39,8 +40,10 @@ zigchain-examples-private/
 ├── README.md
 ├── LICENSE
 └── examples/
-    └── frontend/
-        └── token-factory/
+    ├── frontend/
+    │   └── token-factory/
+    └── integrations/
+        └── callbacks-module/
 ```
 
 ## Tutorials
@@ -49,6 +52,7 @@ For step-by-step guides that use these examples:
 
 - **ZIGChain Docs** – [Tutorial Docs](https://docs.zigchain.com/tutorials)
 - **Token Factory tutorial** – See the [Token Factory README](examples/frontend/token-factory/README.md) and the [Build a Token Factory in 15 Minutes](https://docs.zigchain.com/tutorials/build-a-factory-in-15-mins) article on the ZIGChain docs.
+- **ibc-callbacks-module** – See the [Callbacks Module README](examples/integrations/callbacks-module/README.md) and the [ibc-callbacks-module](https://docs.zigchain.com/tutorials/ibc-callbacks-module) article on the ZIGChain docs.
 
 ## License
 
