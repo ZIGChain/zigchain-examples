@@ -1,6 +1,5 @@
-:::note[Disclaimer]
-This tutorial demonstrates an example flow and sample contract behavior. Validate chain settings, gas values, permissions, and contract logic for your own environment before any production use.
-:::
+> **Disclaimer**
+> This tutorial demonstrates an example flow and sample contract behavior. Validate chain settings, gas values, permissions, and contract logic for your own environment before any production use.
 
 # IBC Callbacks on ZIGChain — End-to-End Tutorial
 
