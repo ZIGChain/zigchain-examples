@@ -1,3 +1,7 @@
+:::note[Disclaimer]
+This tutorial demonstrates an example flow and sample contract behavior. Validate chain settings, gas values, permissions, and contract logic for your own environment before any production use.
+:::
+
 # ZIGChain Examples
 
 A collection of example projects for [ZIGChain](https://zigchain.com)—frontend apps, smart contracts, and integrations you can clone and run.
