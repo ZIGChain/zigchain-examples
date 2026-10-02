@@ -20,8 +20,8 @@ Each example is self-contained so you can copy only what you need.
 Use git sparse checkout to download only the example you need:
 
 ```bash
-git clone --depth 1 --filter=blob:none --sparse https://github.com/ZIGChain/zigchain-examples-private.git zigchain-examples-private
-cd zigchain-examples-private
+git clone --depth 1 --filter=blob:none --sparse https://github.com/ZIGChain/zigchain-examples.git zigchain-examples
+cd zigchain-examples
 git sparse-checkout set examples/frontend/token-factory
 ```
 
@@ -39,7 +39,7 @@ More examples will be added over time. Check the `examples/` folder for the late
 ## Repository Structure
 
 ```
-zigchain-examples-private/
+zigchain-examples/
 ├── README.md
 ├── LICENSE
 └── examples/

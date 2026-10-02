@@ -34,8 +34,8 @@ This example provides a **complete token factory interface**—a web app where u
 ## 4. Quick Start
 
 ```bash
-git clone --depth 1 --filter=blob:none --sparse https://github.com/ZIGChain/zigchain-examples-private.git zigchain-examples-private
-cd zigchain-examples-private
+git clone --depth 1 --filter=blob:none --sparse https://github.com/ZIGChain/zigchain-examples.git zigchain-examples
+cd zigchain-examples
 git sparse-checkout set examples/frontend/token-factory
 cd examples/frontend/token-factory
 npm i
@@ -125,7 +125,7 @@ Deploy the output (e.g. Vercel): connect the repo, set the same env vars in the 
 
 ## 10. Related Resources
 
-- [ZIGChain Examples](https://github.com/ZIGChain/zigchain-examples-private) — this repo; [Token Factory path](https://github.com/ZIGChain/zigchain-examples-private/tree/main/examples/frontend/token-factory).
+- [ZIGChain Examples](https://github.com/ZIGChain/zigchain-examples) — this repo; [Token Factory path](https://github.com/ZIGChain/zigchain-examples/tree/main/examples/frontend/token-factory).
 - [ZIGChain docs](https://docs.zigchain.com) — Token Factory and chain endpoints; [Build a Token Factory in 15 Minutes](https://docs.zigchain.com/tutorials/build-a-factory-in-15-mins).
 - [Pinata Quickstart](https://docs.pinata.cloud/quickstart) — IPFS and gateway setup.
 
