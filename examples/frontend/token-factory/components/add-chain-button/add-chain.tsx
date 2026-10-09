@@ -6,7 +6,7 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import Image from "next/image";
 import { toast } from "sonner";
 
@@ -17,16 +17,10 @@ const wallets = [
     installUrl:
       "https://chrome.google.com/webstore/detail/keplr/dmkamcknogkgcdfhhbddcghachkejeap",
   },
-  {
-    key: "leap",
-    name: "Leap Wallet",
-    installUrl:
-      "https://chromewebstore.google.com/detail/leap-cosmos-wallet/fcfcfllfndlomdhbehjjcoimbgofdncg",
-  },
 ];
 
 const AddChainButton = () => {
-  const addChain = async (wallet: "kepler" | "leap") => {
+  const addChain = async (wallet: "keplr") => {
     if (!(window as any)[wallet]) {
       const installUrl = wallets.find((x) => x.key === wallet)?.installUrl;
 
@@ -113,14 +107,6 @@ const AddChainButton = () => {
           feeCurrencies,
           image: `https://pbs.twimg.com/profile_images/1793945589165506560/54PyQaWN_400x400.jpg`,
         };
-
-        if (wallet === "leap") {
-          (suggestOptions as any).theme = {
-            primaryColor: "#4c6bd3",
-            gradient: "linear-gradient(#4c6bd3, #08cab5)",
-          };
-        }
-
 
         await (window as any)[wallet].experimentalSuggestChain(suggestOptions);
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { env } from "@/lib/env";
+import { NATIVE_DENOM } from "@/lib/constants";
 import { useTx } from "@/lib/hooks/useTx";
 import {
   MsgCreateDenom,
@@ -16,7 +17,7 @@ import {
   Input,
   Switch,
   Textarea,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import crypto from "crypto";
 import { ChangeEvent, useRef, useState } from "react";
 import { toast } from "sonner";
@@ -319,7 +320,7 @@ export default function TokenCreationForm({
       // Execute all three messages in sequence: create, set metadata, and mint
       await tx([createDenomMsg, setMetadataMsg, mintAndSendMsg], {
         fee: {
-          amount: coins(200, "uzig"), // Increased fee for multiple messages
+          amount: coins(200_000_000_000_000, NATIVE_DENOM), // 200 × 10¹² (v5 azig)
           gas: "500000", // Increased gas for multiple messages
         },
         onSuccess: async () => {

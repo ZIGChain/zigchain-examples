@@ -3,7 +3,7 @@
 import { WalletContextProvider } from "@/context/ChainContext";
 import { NetworkContextProvider } from "@/context/NetworkContext";
 import { ThemeProvider } from "@/context/ThemeProvider";
-import { NextUIProvider } from "@nextui-org/react";
+import { HeroUIProvider } from "@heroui/react";
 import * as React from "react";
 
 export interface ProvidersProps {
@@ -12,7 +12,7 @@ export interface ProvidersProps {
 
 export function Providers({ children }: ProvidersProps) {
   return (
-    <NextUIProvider>
+    <HeroUIProvider>
       <ThemeProvider
         attribute="class"
         defaultTheme="dark"
@@ -23,6 +23,6 @@ export function Providers({ children }: ProvidersProps) {
           <WalletContextProvider>{children}</WalletContextProvider>
         </NetworkContextProvider>
       </ThemeProvider>
-    </NextUIProvider>
+    </HeroUIProvider>
   );
 }

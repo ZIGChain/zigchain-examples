@@ -24,7 +24,7 @@ import {
   Tab,
   Tabs,
   User,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import clsx from "clsx";
 import { Power } from "lucide-react";
 import { useEffect, useState } from "react";

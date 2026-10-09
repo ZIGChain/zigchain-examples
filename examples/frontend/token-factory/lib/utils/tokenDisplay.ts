@@ -4,17 +4,26 @@
  * - IBC tokens show short names (USDC, ATOM) and optional icons.
  */
 
+const ZIG_ICON = "https://s2.coinmarketcap.com/static/img/coins/64x64/9260.png";
+
 /** Native ZIG and other known base denoms: same shape as IPFS metadata so wallet treats them like cbus/bsheep */
 export const KNOWN_TOKEN_METADATA: Record<
   string,
   { name: string; symbol: string; ticker: string; icon: string; image?: string }
 > = {
+  azig: {
+    name: "ZIG",
+    symbol: "ZIG",
+    ticker: "ZIG",
+    icon: ZIG_ICON,
+    image: ZIG_ICON,
+  },
   uzig: {
     name: "ZIG",
     symbol: "ZIG",
     ticker: "ZIG",
-    icon: "https://s2.coinmarketcap.com/static/img/coins/64x64/9260.png",
-    image: "https://s2.coinmarketcap.com/static/img/coins/64x64/9260.png",
+    icon: ZIG_ICON,
+    image: ZIG_ICON,
   },
 };
 

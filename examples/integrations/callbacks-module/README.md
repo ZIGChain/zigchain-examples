@@ -34,7 +34,7 @@ on Osmosis; settlement (and the contract call) happens on ZIGChain.
 
 | Tool                         | Why                                           |
 | ---------------------------- | --------------------------------------------- |
-| `zigchaind` v3.0.0           | Query/tx against ZIGChain testnet             |
+| `zigchaind` v5.x           | Query/tx against ZIGChain testnet             |
 | `osmosisd` (Osmosis testnet) | Send the ICS-20 transfer with memo            |
 | `hermes` v1.10+              | Open + operate the transfer channel (§4)      |
 | `rustup` + `wasm32` target   | Compile the contract                          |
@@ -71,8 +71,8 @@ Copy this block into a `.env` (or source it directly). Fill in the two key names
 export ZIG_CHAIN_ID="zig-test-2"
 export ZIG_NODE="https://testnet-rpc.zigchain.com:443"
 export ZIG_LCD="https://testnet-api.zigchain.com"
-export ZIG_DENOM="uzig"
-export ZIG_GAS_PRICES="0.0025${ZIG_DENOM}"
+export ZIG_DENOM="azig"
+export ZIG_GAS_PRICES="2500000000${ZIG_DENOM}"
 export ZIG_KEY="my-key"                                     # name in zigchaind keyring
 
 # --- Osmosis testnet ---
@@ -317,7 +317,7 @@ rpc_timeout = '15s'
 account_prefix = 'zig'
 key_name = 'zig-relayer'
 store_prefix = 'ibc'
-gas_price = { price = 0.0025, denom = 'uzig' }
+gas_price = { price = 2500000000, denom = 'azig' }
 gas_multiplier = 1.4
 max_gas = 4000000
 clock_drift = '30s'

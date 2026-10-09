@@ -27,7 +27,7 @@ import {
   TableRow,
   User,
   useDisclosure,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { ChevronDown, Copy, Plus, Search } from "lucide-react";
 import { useCallback, useMemo, useState } from "react";
 import TokenCreationForm from "../token-creation-form";
@@ -208,7 +208,7 @@ export default function TokenTable() {
       case "ticker":
         return (
           <div className="flex flex-col">
-            <p className="text-bold text-small capitalize">{metadata.symbol}</p>
+            <p className="text-bold text-small capitalize">{metadata?.symbol || "UNKNOWN"}</p>
           </div>
         );
       case "supply":

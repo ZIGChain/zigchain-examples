@@ -40,6 +40,7 @@ next-env.d.ts
 # logs
 /logs/
 coin-details-log.json
+tokens.json
 *.log
 
 # environment files

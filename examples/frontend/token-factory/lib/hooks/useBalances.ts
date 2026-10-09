@@ -102,7 +102,7 @@ export const useBalances = (address: string | undefined) => {
           image: "",
         };
 
-        // Same method as cbus/bsheep: use known metadata for native ZIG (uzig) so name/symbol/icon show
+        // Same method as cbus/bsheep: use known metadata for native ZIG (azig) so name/symbol/icon show
         const known = KNOWN_TOKEN_METADATA[balance.denom];
         if (known) {
           Object.assign(fallback, known);

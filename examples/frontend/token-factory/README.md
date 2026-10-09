@@ -23,9 +23,9 @@ This example provides a **complete token factory interface**—a web app where u
 
 ## 3. Prerequisites
 
-- **Node.js** 18+ (see [Toolchain](#toolchain-pinning) for pinned version).
-- **npm** (or yarn / pnpm / bun).
-- **Wallet** — a Cosmos-compatible wallet (e.g. Keplr, Leap) for signing transactions.
+- **Node.js** 20 (see [Toolchain](#toolchain-pinning) for pinned version).
+- **pnpm** 9 (pinned in `package.json` as `packageManager`; run `corepack enable` to get it). The committed lockfile is `pnpm-lock.yaml`.
+- **Wallet** — a Cosmos-compatible wallet (e.g. Keplr) for signing transactions.
 - **ZIGChain testnet account** — recommended for testing (no mainnet funds required).
 - **Pinata account** — for IPFS (token images); see [Environment Configuration](#5-environment-configuration).
 
@@ -38,9 +38,9 @@ git clone --depth 1 --filter=blob:none --sparse https://github.com/ZIGChain/zigc
 cd zigchain-examples
 git sparse-checkout set examples/frontend/token-factory
 cd examples/frontend/token-factory
-npm i
+pnpm install --frozen-lockfile
 cp .env.example .env.local
-npm run dev
+pnpm dev
 ```
 
 Then open [http://localhost:3000](http://localhost:3000). Set `PINATA_JWT` and `NEXT_PUBLIC_GATEWAY_URL` in `.env.local` for token image uploads (see [Environment Configuration](#5-environment-configuration)).
@@ -70,6 +70,7 @@ These values are already set in `.env.example` for ZIGChain mainnet and testnet.
 
 - **`PINATA_JWT`** — Your JWT for the [Pinata](https://www.pinata.cloud) IPFS API. Create an API key in the Pinata dashboard and paste the JWT here. Required for uploading token images.
 - **`NEXT_PUBLIC_GATEWAY_URL`** — Your Pinata gateway URL (e.g. `https://your-subdomain.mypinata.cloud`). Found under **Gateways** in the Pinata dashboard. Used to resolve IPFS URLs for token images.
+- **`NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID`** (optional) — A WalletConnect project ID from [Reown Cloud](https://cloud.reown.com). When set, the wallet dialog also offers Keplr Mobile; when empty, only the Keplr browser extension is offered.
 
 No private keys go in env; wallet signing is done via the connected wallet.
 
@@ -115,8 +116,8 @@ The app includes a **network switch in the frontend** so users can change networ
 ## 9. Build / Production
 
 ```bash
-npm run build
-npm run start
+pnpm build
+pnpm start
 ```
 
 Deploy the output (e.g. Vercel): connect the repo, set the same env vars in the dashboard, and deploy. Use `NEXT_PUBLIC_*` for any client-visible URLs and chain IDs.
@@ -145,4 +146,4 @@ Deploy the output (e.g. Vercel): connect the repo, set the same env vars in the 
 
 ## Toolchain Pinning
 
-This project uses **Node.js 20**. If you use [nvm](https://github.com/nvm-sh/nvm), run `nvm use` in the project root (see `.nvmrc`).
+This project uses **Node.js 20** and **pnpm 9**. If you use [nvm](https://github.com/nvm-sh/nvm), run `nvm use` in the project root (see `.nvmrc`).
