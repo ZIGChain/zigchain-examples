@@ -3,7 +3,7 @@ name = "counter"
 version = "0.1.0"
 edition = "2021"
 description = "Minimal counter contract with IBC destination callback for the ZIGChain callbacks tutorial"
-license = "Apache-2.0"
+license = "MIT"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -23,7 +23,7 @@ overflow-checks = true
 library = []
 
 [dependencies]
-# ZIGChain v3.0.0 runs wasmd v0.55.1 / wasmvm v2.2.x — CosmWasm 2.x VM.
+# ZIGChain v5 runs wasmd / wasmvm with CosmWasm 2.x VM.
 # The `cosmwasm_3_0` capability is not available on-chain, so we target 2.2
 # and parse the ICS-20 packet data ourselves (no `cb.transfer` convenience).
 cosmwasm-schema = "2.2"
@@ -32,6 +32,3 @@ cw-storage-plus = "2.0"
 schemars = "0.8"
 serde = { version = "1.0", default-features = false, features = ["derive"] }
 thiserror = "1.0"
-
-[dev-dependencies]
-cw-multi-test = "2.2"

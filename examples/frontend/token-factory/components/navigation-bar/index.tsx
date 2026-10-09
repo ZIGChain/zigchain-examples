@@ -10,7 +10,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import React from "react";
 import { ENV_VARS } from "@/lib/env";
 import { ModeToggle } from "../mode-toggle";

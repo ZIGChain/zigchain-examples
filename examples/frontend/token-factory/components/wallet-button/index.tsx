@@ -1,7 +1,7 @@
 "use client";
 
 import { useChain } from "@cosmos-kit/react";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 import { ArrowDownToLine, IterationCw, Wallet } from "lucide-react";
 import { WalletView } from "../wallet";
 

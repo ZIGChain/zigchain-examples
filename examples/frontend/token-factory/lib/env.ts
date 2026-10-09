@@ -24,6 +24,7 @@ export const ENV_VARS = {
 
   // Other variables
   GATEWAY_URL: process.env.NEXT_PUBLIC_GATEWAY_URL ?? "",
+  WALLETCONNECT_PROJECT_ID: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? "",
   ENABLE_LOGGING: process.env.ENABLE_LOGGING === "true",
 
   // Site branding

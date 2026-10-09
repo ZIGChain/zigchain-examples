@@ -15,6 +15,8 @@ This repository is the official source for **ZIGChain example code**. Use it to:
 
 Each example is self-contained so you can copy only what you need.
 
+**Status:** none of the examples has automated tests; each is checked by building and running it, as described in [CONTRIBUTING.md](CONTRIBUTING.md#testing).
+
 ## How to Download a Single Example
 
 Use git sparse checkout to download only the example you need:
@@ -26,6 +28,8 @@ git sparse-checkout set examples/frontend/token-factory
 ```
 
 Then copy the contents of `examples/frontend/token-factory` into your project folder (or work from that directory). Replace `examples/frontend/token-factory` with the path of the example you want (see table below).
+
+Each example's README has its own prerequisites and quick start.
 
 ## Table of Available Examples
 
@@ -41,6 +45,8 @@ More examples will be added over time. Check the `examples/` folder for the late
 ```
 zigchain-examples/
 ├── README.md
+├── ARCHITECTURE.md
+├── CONTRIBUTING.md
 ├── LICENSE
 └── examples/
     ├── frontend/
@@ -48,6 +54,8 @@ zigchain-examples/
     └── integrations/
         └── callbacks-module/
 ```
+
+[ARCHITECTURE.md](ARCHITECTURE.md#codemap) describes each directory and how the examples work.
 
 ## Tutorials
 
@@ -57,6 +65,10 @@ For step-by-step guides that use these examples:
 - **Token Factory tutorial** – See the [Token Factory README](examples/frontend/token-factory/README.md) and the [Build a Token Factory in 15 Minutes](https://docs.zigchain.com/tutorials/build-a-factory-in-15-mins) article on the ZIGChain docs.
 - **ibc-callbacks-module** – See the [Callbacks Module README](examples/integrations/callbacks-module/README.md) and the [ibc-callbacks-module](https://docs.zigchain.com/tutorials/ibc-callbacks-module) article on the ZIGChain docs.
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, local checks and the pull request process, and [ARCHITECTURE.md](ARCHITECTURE.md) for how the repository and each example are organized. For questions, open an issue on GitHub.
+
 ## License
 
-See [LICENSE](LICENSE) in this repository.
+MIT. See [LICENSE](LICENSE); each example also carries its own copy so it stays licensed when copied out.

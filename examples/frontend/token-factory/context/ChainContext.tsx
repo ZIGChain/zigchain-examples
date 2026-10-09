@@ -1,10 +1,17 @@
 import { localzigchainAssetlist, zigchain } from "@/lib/chain-config";
-import { currentNetworkConfig } from "@/lib/env";
+import { currentNetworkConfig, ENV_VARS } from "@/lib/env";
 import { Client } from "@/ts-client";
 import { Chain } from "@chain-registry/types";
 import { ChainProvider } from "@cosmos-kit/react";
 import { SignerOptions, wallets } from "cosmos-kit";
 import { createContext, useContext } from "react";
+
+// Keplr Mobile connects through WalletConnect, which needs a project ID.
+// Without one, offer only the Keplr browser extension.
+const walletConnectProjectId = ENV_VARS.WALLETCONNECT_PROJECT_ID;
+const keplr = wallets.for("keplr");
+const keplrWallets =
+  walletConnectProjectId ? keplr : keplr.extension;
 
 export const chainClient = new Client({
   apiURL: currentNetworkConfig.apiURL,
@@ -28,19 +35,24 @@ export const WalletContextProvider = ({ children }: any) => {
       <ChainProvider
         chains={[zigchain]}
         assetLists={[localzigchainAssetlist]}
-        wallets={wallets}
-        walletConnectOptions={{
-          signClient: {
-            projectId: "",
-            relayUrl: "wss://relay.walletconnect.org",
-            metadata: {
-              name: "ZIGChain",
-              description: "ZIGChain Examples",
-              url: "",
-              icons: [],
-            },
-          },
-        }}
+        wallets={keplrWallets}
+        throwErrors={false}
+        walletConnectOptions={
+          walletConnectProjectId
+            ? {
+                signClient: {
+                  projectId: walletConnectProjectId,
+                  relayUrl: "wss://relay.walletconnect.org",
+                  metadata: {
+                    name: "ZIGChain",
+                    description: "ZIGChain Examples",
+                    url: "",
+                    icons: [],
+                  },
+                },
+              }
+            : undefined
+        }
         endpointOptions={{
           endpoints: {
             zigchain: {

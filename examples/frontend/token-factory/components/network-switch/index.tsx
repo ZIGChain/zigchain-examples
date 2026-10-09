@@ -1,7 +1,7 @@
 "use client";
 
 import { useNetworkContext } from "@/context/NetworkContext";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 import { useState } from "react";
 
 export function NetworkSwitch() {

@@ -13,6 +13,7 @@ export async function POST(request: NextRequest) {
       },
       body: data,
     });
+    if (!res.ok) throw new Error(`Pinata responded ${res.status}`);
     const { IpfsHash } = await res.json();
 
     return NextResponse.json({ IpfsHash }, { status: 200 });

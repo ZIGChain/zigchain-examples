@@ -3,6 +3,12 @@
  * Stablecoins are treated as $1; other tokens use CoinGecko when available.
  */
 
+import {
+  LEGACY_NATIVE_DENOM,
+  NATIVE_DECIMALS,
+  NATIVE_DENOM,
+} from "@/lib/constants";
+
 const STABLECOIN_SYMBOLS = new Set(
   ["USDC", "USDT", "UUSDC", "DAI", "BUSD", "TUSD", "USDP", "FRAX", "USDD"].map(
     (s) => s.toUpperCase(),
@@ -111,6 +117,14 @@ const DEFAULT_DECIMALS = 6;
  */
 export function getDecimalsFromDenom(denom: any): number {
   if (!denom) return DEFAULT_DECIMALS;
+
+  const base =
+    typeof denom === "string"
+      ? denom
+      : (denom.base ?? denom.denom ?? "").toLowerCase();
+  if (base === NATIVE_DENOM) return NATIVE_DECIMALS;
+  if (base === LEGACY_NATIVE_DENOM) return 6;
+
   const units = denom.denom_units ?? denom.denomUnits ?? [];
   if (Array.isArray(units) && units.length > 0) {
     const display = denom.display;
